@@ -2,13 +2,16 @@
     var Calendar = FullCalendar.Calendar;
     var events = [];
     $(function() {
-        $('#event-booking-details-modal').modal('show');
-        // if (!!scheds) {
-        //     Object.keys(scheds).map(k => {
-        //         var row = scheds[k]
-        //         events.push({ id: row.id, title: row.title, start: row.start_datetime, end: row.end_datetime });
-        //     })
-        // }
+       // $('#event-booking-details-modal').modal('show');
+       
+        if (!!scheds) {
+            Object.keys(scheds).map(k => {
+                var row = scheds[k]
+                console.log(row);
+               // events.push({ id: row.id, title: row.name, start: row.start_datetime, end: row.end_datetime });
+                events.push({ id: row.id, title: row.name,start: row.start, end: row.end});
+            })
+        }
         var date = new Date()
         var d = date.getDate(),
             m = date.getMonth(),
@@ -27,16 +30,16 @@
             eventClick: function(info) {
                 var _details = $('#event-details-modal')
                 var id = info.event.id
-                // if (!!scheds[id]) {
-                //     _details.find('#title').text(scheds[id].title)
-                //     _details.find('#description').text(scheds[id].description)
-                //     _details.find('#start').text(scheds[id].sdate)
-                //     _details.find('#end').text(scheds[id].edate)
-                //     _details.find('#edit,#delete').attr('data-id', id)
-                //     _details.modal('show')
-                // } else {
-                //     alert("Event is undefined");
-                // }
+                if (!!scheds[id]) {
+                    _details.find('#title').text(scheds[id].title)
+                    _details.find('#description').text(scheds[id].description)
+                    _details.find('#start').text(scheds[id].sdate)
+                    _details.find('#end').text(scheds[id].edate)
+                    _details.find('#edit,#delete').attr('data-id', id)
+                    _details.modal('show')
+                } else {
+                    alert("Event is undefined");
+                }
             },
             eventDidMount: function(info) {
                 // Do Something after events mounted

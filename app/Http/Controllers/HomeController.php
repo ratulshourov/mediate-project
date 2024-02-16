@@ -24,8 +24,20 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $events = event::where('event_status', 1)->get();
-        return view('home', compact('events'));
+       // $events = event::where('event_status', 1)->get();
+       // return view('home', compact('events'));
+       $schedules = Event::all();
+$sched_res = [];
+
+foreach ($schedules as $schedule) {
+    $row['id'] = $schedule->id;
+    $row['name'] = $schedule->name;
+    $row['start'] = $schedule->event_date;
+    $row['end'] = $schedule->event_date;
+    $sched_res[$schedule->id] = $row;
+}
+       // $events = event::where('event_status', 1)->get();
+        return view('home', ['sched_res' => $sched_res]);
     }
 
     public function adminIndex()
