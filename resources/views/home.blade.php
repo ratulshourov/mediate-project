@@ -198,6 +198,8 @@
                             <dd id="title" class="fw-bold fs-4"></dd>
                             <dt class="text-muted">Description</dt>
                             <dd id="description" class=""></dd>
+                            <dt class="text-muted">Length(Min)</dt>
+                            <dd id="length" class=""></dd>
                             <dt class="text-muted">Start</dt>
                             <dd id="start" class=""></dd>
                             <dt class="text-muted">End</dt>

@@ -32,6 +32,8 @@ $sched_res = [];
 foreach ($schedules as $schedule) {
     $row['id'] = $schedule->id;
     $row['name'] = $schedule->name;
+    $row['description'] = $schedule->description;
+    $row['event_length'] = $schedule->event_length;
     $row['start'] = $schedule->event_date;
     $row['end'] = $schedule->event_date;
     $sched_res[$schedule->id] = $row;

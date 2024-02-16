@@ -7,9 +7,9 @@
         if (!!scheds) {
             Object.keys(scheds).map(k => {
                 var row = scheds[k]
-                console.log(row);
+               // console.log(row);
                // events.push({ id: row.id, title: row.name, start: row.start_datetime, end: row.end_datetime });
-                events.push({ id: row.id, title: row.name,start: row.start, end: row.end});
+                events.push({ id: row.id, title: row.name,start: row.start, end: row.end,event_length:row.event_length,description:row.description});
             })
         }
         var date = new Date()
@@ -30,11 +30,14 @@
             eventClick: function(info) {
                 var _details = $('#event-details-modal')
                 var id = info.event.id
+                //console.log(scheds[id].name);
                 if (!!scheds[id]) {
-                    _details.find('#title').text(scheds[id].title)
+                    console.log("details"+scheds);
+                    _details.find('#title').text(scheds[id].name)
                     _details.find('#description').text(scheds[id].description)
-                    _details.find('#start').text(scheds[id].sdate)
-                    _details.find('#end').text(scheds[id].edate)
+                    _details.find('#length').text(scheds[id].event_length)
+                    _details.find('#start').text(scheds[id].start)
+                    _details.find('#end').text(scheds[id].end)
                     _details.find('#edit,#delete').attr('data-id', id)
                     _details.modal('show')
                 } else {
