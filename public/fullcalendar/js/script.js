@@ -62,13 +62,15 @@
         $('#edit').click(function() {
             var id = $(this).attr('data-id')
             if (!!scheds[id]) {
+                //alert('ss');
+                console.log(scheds[id]);
                 var _form = $('#schedule-form')
                 console.log(String(scheds[id].start_datetime), String(scheds[id].start_datetime).replace(" ", "\\t"))
                 _form.find('[name="id"]').val(id)
-                _form.find('[name="title"]').val(scheds[id].title)
+                _form.find('[name="name"]').val(scheds[id].name)
                 _form.find('[name="description"]').val(scheds[id].description)
-                _form.find('[name="start_datetime"]').val(String(scheds[id].start_datetime).replace(" ", "T"))
-                _form.find('[name="end_datetime"]').val(String(scheds[id].end_datetime).replace(" ", "T"))
+                _form.find('[name="event_date"]').val(String(scheds[id].start).replace(" ", "T"))
+                _form.find('[name="event_date"]').val(String(scheds[id].start).replace(" ", "T"))
                 $('#event-details-modal').modal('hide')
                 _form.find('[name="title"]').focus()
             } else {

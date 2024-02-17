@@ -18,39 +18,41 @@ class EventController extends Controller
     public function saveEvent(Request $request)
     {
         //dd($request->input('event_date'));
-        
+
         $this->validate($request, array(
             'name' => 'required',
             'event_date' => 'required',
-          //  'event_time' => 'required',
+            //  'event_time' => 'required',
             'event_length' => 'required',
-        ));
-    
-        $event = new event();
-        $event->name = $request->input('name');
-        $event->description = $request->input('description');
+        )
+        );
         
-       // $eventDate = DateTime::createFromFormat('d/m/Y', $request->input('event_date'));
-        //$formattedDate = $eventDate->format('Y-m-d');
-
-
-       // $eventTime = DateTime::createFromFormat('h:i A', $request->input('event_time'));
-       // $formattedTime = $eventTime->format('H:i:s');
-       $dateTime = new DateTime($request->input('event_date'));
-
-        // Format the date and time as yyyy/mm/dd H:i
-        $formattedDateTime = $dateTime->format('Y/m/d H:i');
-        
-        // Output the formatted date and time
-      //  echo $formattedDateTime;
-       // dd($formattedDateTime);
-
-        $event->event_date = $formattedDateTime;
-        //$event->event_time = $formattedTime;
-        $event->event_length = $request->input('event_length');
-        $event->created_by = Auth::user()->id;
-        $event->save();
-       // echo "<script> alert('Schedule Successfully Saved.'); location.replace('./') </script>";
+        if (!empty($request->input('id'))) {
+         
+            $event = Event::find($request->input('id'));
+            $event->name = $request->input('name');
+            $event->description = $request->input('description');
+            $dateTime = new DateTime($request->input('event_date'));
+            $formattedDateTime = $dateTime->format('Y/m/d H:i');
+            $event->event_date = $formattedDateTime;
+            $event->event_length = $request->input('event_length');
+            $event->created_by = Auth::user()->id;
+            $event->save();
+        } else {
+            // If 'id' is not present, create a new event
+            $event = new Event();
+            $event->name = $request->input('name');
+            $event->description = $request->input('description');
+            $dateTime = new DateTime($request->input('event_date'));
+            $formattedDateTime = $dateTime->format('Y/m/d H:i');
+            $event->event_date = $formattedDateTime;
+            $event->event_length = $request->input('event_length');
+            $event->created_by = Auth::user()->id;
+            $event->save();
+        }
+        //$event = new event();
+       
+        // echo "<script> alert('Schedule Successfully Saved.'); location.replace('./') </script>";
         return redirect()->back()->with('status', 'Your booking has been saved');
     }
 }
