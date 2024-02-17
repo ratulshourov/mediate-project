@@ -64,9 +64,9 @@
 
                     <div class="col-md-12">
                         <div style="font-width: small;" class="btn-group" role="group" aria-label="Basic example">
-                            <button type="button" class="btn btn-primary" onclick="filterEvents(15)">15</button>
-                            <button type="button" class="btn btn-primary" onclick="filterEvents(25)">25</button>
-                            <button type="button" class="btn btn-primary" onclick="filterEvents(50)">50</button>
+                            <button type="button" class="btn btn-primary" data-mdb-ripple-init>15 </button>
+                            <button type="button" class="btn btn-primary" data-mdb-ripple-init>25</button>
+                            <button type="button" class="btn btn-primary" data-mdb-ripple-init>50</button>
                         </div>
 
                     </div>
@@ -255,11 +255,6 @@
 <script>
     var scheds = @json($sched_res);
     console.log(scheds);
-    <script>
-    function filterEvents(timeDuration) {
-        window.location.href = '/home?time_duration=' + timeDuration;
-    }
-</script>
 </script>
 <script src="{{asset('fullcalendar')}}/js/script.js"></script>
 
