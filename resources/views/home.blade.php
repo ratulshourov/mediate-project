@@ -59,6 +59,19 @@
     <div class="container py-5" id="page-container">
         <div class="row">
             <div class="col-md-2" style="border:1px solid black;">
+                <p>see event</p>
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div style="font-width: small;" class="btn-group" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-primary" onclick="filterEvents(15)">15</button>
+                            <button type="button" class="btn btn-primary" onclick="filterEvents(25)">25</button>
+                            <button type="button" class="btn btn-primary" onclick="filterEvents(50)">50</button>
+                        </div>
+
+                    </div>
+
+                </div>
                 <p>Booking</p>
                 <div class="row">
                     <div class="col-md-12">
@@ -111,7 +124,8 @@
                         <p style="margin-top:3px;font-size:small;color:blue;">Groups</p>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" />
-                            <label style="font-width: small; color:blue;" class="form-check-label" for="inlineCheckbox1">All Favourite Members</label>
+                            <label style="font-width: small; color:blue;" class="form-check-label"
+                                for="inlineCheckbox1">All Favourite Members</label>
                         </div>
 
                     </div>
@@ -148,25 +162,36 @@
                                 </div>
 
                                 <div class="col-lg-12">
-                    <div class="form-group mb-3">
-                        <label for="event_length"> <b>Meditate Time<span class="text-danger">*</span></b> </label>
-                        <div class="btn-group">
-                            <input type="radio" class="btn-check @error('event_length') is-invalid @enderror" name="event_length" id="option1" value="15" autocomplete="off" checked />
-                            <label class="btn btn-secondary" for="option1" data-mdb-ripple-init>15 min</label>
-                          
-                            <input type="radio" class="btn-check @error('event_length') is-invalid @enderror" name="event_length" id="option2" value="25" autocomplete="off" />
-                            <label class="btn btn-secondary" for="option2" data-mdb-ripple-init>25 min</label>
-                          
-                            <input type="radio" class="btn-check @error('event_length') is-invalid @enderror" name="event_length" id="option3" value="45" autocomplete="off" />
-                            <label class="btn btn-secondary" for="option3" data-mdb-ripple-init>45 min</label>
-                        </div>
-                        <span class="text-danger">
-                            @error('event_length')
-                                <p class="text-danger">{{$message}}</p> 
-                            @enderror
-                        </span>
-                    </div>
-                </div>
+                                    <div class="form-group mb-3">
+                                        <label for="event_length"> <b>Meditate Time<span
+                                                    class="text-danger">*</span></b> </label>
+                                        <div class="btn-group">
+                                            <input type="radio"
+                                                class="btn-check @error('event_length') is-invalid @enderror"
+                                                name="event_length" id="option1" value="15" autocomplete="off"
+                                                checked />
+                                            <label class="btn btn-secondary" for="option1" data-mdb-ripple-init>15
+                                                min</label>
+
+                                            <input type="radio"
+                                                class="btn-check @error('event_length') is-invalid @enderror"
+                                                name="event_length" id="option2" value="25" autocomplete="off" />
+                                            <label class="btn btn-secondary" for="option2" data-mdb-ripple-init>25
+                                                min</label>
+
+                                            <input type="radio"
+                                                class="btn-check @error('event_length') is-invalid @enderror"
+                                                name="event_length" id="option3" value="45" autocomplete="off" />
+                                            <label class="btn btn-secondary" for="option3" data-mdb-ripple-init>45
+                                                min</label>
+                                        </div>
+                                        <span class="text-danger">
+                                            @error('event_length')
+                                            <p class="text-danger">{{$message}}</p>
+                                            @enderror
+                                        </span>
+                                    </div>
+                                </div>
 
                             </form>
                         </div>
@@ -230,6 +255,11 @@
 <script>
     var scheds = @json($sched_res);
     console.log(scheds);
+    <script>
+    function filterEvents(timeDuration) {
+        window.location.href = '/home?time_duration=' + timeDuration;
+    }
+</script>
 </script>
 <script src="{{asset('fullcalendar')}}/js/script.js"></script>
 
