@@ -84,7 +84,8 @@
             if (!!scheds[id]) {
                 var _conf = confirm("Are you sure to delete this scheduled event?");
                 if (_conf === true) {
-                    location.href = "./delete_schedule.php?id=" + id;
+                    location.href = "./delete-event/" + id;
+                    //location.href = "./delete_schedule.php?id=" + id;
                 }
             } else {
                 alert("Event is undefined");

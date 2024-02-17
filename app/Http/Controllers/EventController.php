@@ -55,4 +55,18 @@ class EventController extends Controller
         // echo "<script> alert('Schedule Successfully Saved.'); location.replace('./') </script>";
         return redirect()->back()->with('status', 'Your booking has been saved');
     }
+
+    public function deleteEvent($id)
+{
+    $event = Event::find($id);
+
+    if ($event) {
+        $event->delete();
+        return redirect()->back()->with('status', 'Event has been deleted successfully');
+    } else {
+        return redirect()->back()->with('error', 'Event not found');
+    }
+}
+
+   
 }

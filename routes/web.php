@@ -68,6 +68,8 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::post('/save-event', [EventController::class,'saveEvent'])->name('save.event');
     Route::post('/edit-event/{id}', [EventController::class,'editEvent'])->name('edit.event');
+    Route::get('/delete-event/{id}', [EventController::class,'deleteEvent'])->name('delete.event');
+
 });
 
 Route::group(['middleware' => ['auth','is_admin']], function () {
