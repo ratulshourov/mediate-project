@@ -25,3 +25,11 @@ php artisan serve
 after registration and login
 
 http://127.0.0.1:8000/video_chat
+
+
+.env file set  the below key for video call
+
+PUSHER_APP_ID="1740681"
+PUSHER_APP_KEY="5f5b37ece95df5c0aece"
+PUSHER_APP_SECRET="6ec585840ac535293174"
+PUSHER_APP_CLUSTER="ap3"
